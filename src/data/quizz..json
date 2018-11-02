@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Mon lecteur Blu Ray UHD 4K est-il universel (lit les CD, les DVD, les Blu-ray  et les Blu-raY UHD)",
+    "answer": true
+  },
+  {
+    "question": "Les consoles XBox X et S développées par Microsoft, peuvent-elles lire les films BD UHD 4K ?",
+    "answer": true
+  },
+  {
+    "question": "Une image 4 UHD Blu Ray est elle 2 fois supérieure à celle de mon Blu Ray ?",
+    "answer": false
+  },
+  {
+    "question": "Le lecteur UHD DP-UB9000 de Panasonic est-il compatible HDR10+ et Dolby Vision ?",
+    "answer": true
+  },
+  {
+    "question": "Un flux minimum de 100 mégabits/seconde est nécessaire pour bénéficier de la qualité UHD 4K ?",
+    "answer": false
+  },
+  {
+    "question": "Seul le Blu-ray UHD 4K permet le débit minimum nécessaire de 25 mégabits / seconde ?",
+    "answer": true
+  },
+  {
+    "question": "Les lecteurs Blu-Ray UHD 4K Samsung permettent-ils de lire des contenus Dolby Atmos sur leurs barres de son Samsung Harman-Kardon ?",
+    "answer": true
+  },
+  {
+    "question": "Les Téléviseurs UHD 4K représentent déjà plus de 80% des ventes des grands écrans ? (>40’’)",
+    "answer": true
+  },
+  {
+    "question": "Le lecteur Blu-ray 4K LG UBK90, est-il compatible Dolby Vision ?",
+    "answer": true
+  },
+  {
+    "question": "Le HDR ( High Dynamique Range ), qui améliore considérablement l’image , est il une option ?",
+    "answer": true
+  }
+]
