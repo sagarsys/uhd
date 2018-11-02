@@ -1,0 +1,619 @@
+@font-face {
+	font-family: 'Gotham';
+	src: url(../fonts/Gotham-Bold.otf);
+}
+
+body
+{
+	font-family: 'Gotham';
+	width: 1920px;
+	height: 1080px;
+	position: fixed;
+	overflow: hidden;
+	color: #1d2129;
+	background-color: #fafafa;
+}
+
+@media (max-width : 1920px) {
+	body
+	{
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/*--------------------------------------------------
+	FORM
+--------------------------------------------------*/
+.form
+{
+	width: 200%;
+	margin-left: -50%;
+	height: 700px;
+	padding: 30px;
+	border-bottom-right-radius: 60%;
+	border-bottom-left-radius: 60%;
+	background-color: #2d387a;
+	box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+	opacity: 1;
+}
+
+.form-input
+{
+	margin-top: 60px;
+}
+
+.form h1
+{
+	color: #fff;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 0;
+}
+
+.form img
+{
+	margin: auto;
+	width: 440px;
+}
+
+input[type=text], input[type=email]
+{
+	height: 60px;
+	line-height: 60px;
+	font-size: 20px;
+	border: solid 2px #fff;
+	border-radius: 10px;
+	padding: 0 0 0 20px;
+	box-shadow: none;
+	margin-bottom: 40px;
+	background-color: #fff;
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+input[type=text].active, input[type=email].active
+{
+	border-color: #69c5d7;
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.form-group small
+{
+	position: absolute;
+    right: 30px;
+    top: 0;
+    line-height: 60px;
+    opacity: 0.5;
+    color: #00a2e0;
+}
+
+.form-group .error {
+	padding: 4px 16px;
+	border-radius: 8px;
+	transform: translateY(-36px);
+}
+
+.form-group.has-error input {
+	margin-bottom: 12px;
+}
+
+.form-group.has-error .error {
+	transform: translateY(-8px);
+}
+
+.form .checkbox-button
+{
+	position: relative;
+	margin-bottom: 20px;
+	min-height: 65px;
+}
+
+.form .checkbox-button .error {
+	padding: 4px 16px;
+	border-radius: 8px;
+	width: 75%;
+	margin: 4px 0 0;
+}
+
+.form input[type=checkbox]
+{
+	position: absolute;
+	visibility: hidden;
+}
+
+.form input[type=checkbox] + label
+{
+	color: #fff;
+	position: relative;
+	padding: 0 0 0 30px;
+	margin: 0;
+	font-size: 20px;
+	line-height: 20px;
+	font-weight: normal;
+	z-index: 9;
+	cursor: pointer;
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.form .radio-button span
+{
+	color: #fff;
+	font-size: 10px;
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.form .check
+{
+	display: block;
+	position: absolute;
+	border: 3px solid #fff;
+	border-radius: 100%;
+	height: 20px;
+	width: 20px;
+	top: 0px;
+	left: 15px;
+	z-index: 5;
+	transition: border .25s linear;
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.form .check::before
+{
+	display: block;
+	position: absolute;
+	content: '';
+	border-radius: 100%;
+	height: 10px;
+	width: 10px;
+	top: 2px;
+	left: 2px;
+	margin: auto;
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.form input[type=checkbox]:checked ~ .check
+{
+	border: 3px solid #00a2e0;
+}
+
+.form input[type=checkbox]:checked ~ .check::before
+{
+	background: #00a2e0;
+}
+
+.form input[type=checkbox]:checked ~ label
+{
+	font-weight: bold;
+	color: #00a2e0;
+}
+
+.form input[type=checkbox]:checked ~ span
+{
+	color: #00a2e0;
+}
+
+.form .col-btn
+{
+	text-align: left;
+}
+
+.form .col-btn button
+{
+	position: absolute;
+	top: 630px;
+	right: 110px;
+	color: #fff;
+	letter-spacing: 1px;
+	padding: 0 50px;
+	height: 60px;
+	border-radius: 10px;
+	border: none;
+	font-size: 20px;
+	background-color: #00a2e0;
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.form .col-btn.back button
+{
+	top: 630px;
+	left: 110px;
+	background-color: #555;
+}
+
+.form .col-btn button.btn.active, .form .col-btn button.btn:active
+{
+	opacity: 0.9;
+	box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.form .btn.focus, .form .btn:focus, .form .btn:hover
+{
+	color: #fff;
+}
+
+/*--------------------------------------------------
+	CLAVIER
+--------------------------------------------------*/
+.clavier
+{
+	float: left;
+	width: 980px;
+	height: 250px;
+	margin: 75px 470px 0;
+}
+
+.clavier .row
+{
+	width: 100%;
+	height: 50px;
+	margin-bottom: 16.42px;
+}
+
+.clavier span
+{
+	float: left;
+	width: 50px;
+	height: 50px;
+
+	margin-right: 16.42px;
+	
+	font-family: 'Gotham';
+	font-size: 24px;
+	font-weight: normal;
+	line-height: 46px;
+	text-align: center;
+	text-transform: uppercase;
+	
+	border: solid 2px #00a2e0;
+	border-radius: 10px;
+	
+	color: #fff;
+	background-color: #00a2e0;
+
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.clavier span:last-child
+{
+	margin-right: 0;
+}
+
+.clavier span.space-first,
+.clavier span.space-between
+{
+	background-color: transparent;
+	box-shadow: none;
+}
+
+.clavier span.clavier-option
+{
+	color: #fff;
+	background-color: #00a2e0;
+}
+
+.clavier span.space
+{
+	width: 316.143px;
+	background-color: #00a2e0;
+}
+
+.clavier span.suppr
+{
+	width: 116.42px;
+	background-color: #00a2e0;
+	background-image: url(../img/supprimer.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clavier span.space-first, .clavier span.space-between
+{
+	border: none;
+}
+
+.clavier .row:nth-child(2) span.space-first
+{
+	width: 33.21px;
+	margin-right: 0;
+}
+
+.clavier .row:nth-child(2) span.space-between
+{
+	width: 83.21px;
+}
+
+.clavier .row:last-child span.space-first
+{
+	width: 182.84px;
+}
+
+.clavier .row:last-child span.space-between
+{
+	width: 315.68px;
+}
+
+/*--------------------------------------------------
+	Quizz
+--------------------------------------------------*/
+.quizz
+{
+	width: 200%;
+	margin-left: -50%;
+	height: 400px;
+	padding: 30px;
+	border-bottom-right-radius: 60%;
+	border-bottom-left-radius: 60%;
+	background-color: #2d387a;
+	box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+	opacity: 1;
+}
+
+.quizz h1
+{
+	color: #fff;
+	text-align: center;
+	font-size: 40px;
+	margin-top: 30px;
+	margin-bottom: 0;
+}
+
+.quizz h3
+{
+	color: #00a2e0;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+
+.quizz img
+{
+	margin: auto;
+	width: 440px;
+}
+
+.answers
+{
+	height: 680px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.answers h2
+{
+	color: #00a2e0;
+	text-align: center;
+	display: inline-block;
+	min-width: 300px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding: 0 30px;
+	font-size: 30px;
+	line-height: 90px;
+	border-radius: 10px;
+	box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+	text-align: center;
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.answers h2.active
+{
+	background-color: #00a2e0;
+	color: #fff;
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.answers button
+{
+	outline: none;
+	margin: 15px auto;
+	color: #fff;
+	letter-spacing: 1px;
+	padding: 0 60px;
+	height: 60px;
+	border-radius: 10px;
+	border: none;
+	font-size: 20px;
+	background-color: #00a2e0;
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.answers button.btn.active, .answers button.btn:active
+{
+	outline: none;
+	opacity: 0.9;
+	box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+	-webkit-transition: all .25s linear;  
+	-moz-transition: all .25s linear;  
+	-o-transition: all .25s linear;  
+	-ms-transition: all .25s linear;  
+	transition: all .25s linear;
+}
+
+.answers .btn.focus, .answers .btn:focus, .answers .btn:hover
+{
+	outline: none;
+	color: #fff;
+}
+
+/*--------------------------------------------------
+	START
+--------------------------------------------------*/
+.start
+{
+	width: 100%;
+	height: 100%;
+	background-image: url(../img/bg.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/*--------------------------------------------------
+	VALIDATION
+--------------------------------------------------*/
+#fin
+{
+	height: 1080px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#fin.gagne
+{
+	background-image: url(../img/gagne.jpg);
+}
+
+#fin.perdu
+{
+	background-image: url(../img/perdu.jpg);
+}
+
+#fin.dejaJoue
+{
+	background-image: url(../img/dejaJoue.jpg);
+}
+
+.fin-left
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 1080px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fin-left .resume
+{
+	background-color: #fff;
+	border-radius: 20px;
+	padding: 50px;
+	box-shadow: 0 0 20px rgba(51, 51, 51, 0.5);
+}
+
+.fin-left .resume h3
+{
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.fin-left .resume h1
+{
+	font-size: 120px;
+	color: #00a2e0;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.fin-left .resume h4
+{
+	color: #00a2e0;
+	font-size: 45px;
+	text-align: center;
+	margin-top: -15px;
+	margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
