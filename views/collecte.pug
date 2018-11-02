@@ -1,0 +1,105 @@
+extends layout
+
+block content
+    .form.ready.animated.fadeInDown
+        .container
+            .row
+                .col-md-12
+                    img.img-responsive(src='img/logo-blanc.png')
+                    h1 Pour participer, renseignez les informations suivantes :
+        form.container.form-input(method='post')
+            .row
+                .form-group.col-md-6
+                    input.form-control(name='nom' placeholder='Votre nom' type='text' minlength='2' required)
+                    small Obligatoire
+                    .error.bg-danger.text-danger.hide
+                .form-group.col-md-6
+                    input.form-control(name='prenom' placeholder='Votre prénom' type='text' minlength='2' required)
+                    small Obligatoire
+                    .error.bg-danger.text-danger.hide
+            .row
+                .form-group.col-md-6
+                    input.form-control(name='email' placeholder='Votre adresse e-mail' type='email' required)
+                    small Obligatoire
+                    .error.bg-danger.text-danger.hide
+                .form-group.col-md-6
+                    input.form-control(name='adresse' placeholder='Votre adresse' type='text' required)
+                    small Obligatoire
+                    .error.bg-danger.text-danger.hide
+            .row
+                .form-group.col-md-4.has-error
+                    input.form-control(name='codePostal' placeholder='Votre code postal' type='text' required)
+                    small Obligatoire
+                    .error.bg-danger.text-danger.hide
+                .form-group.col-md-8.has-error
+                    input.form-control(name='ville' placeholder='Votre ville' type='text' required)
+                    small Obligatoire
+                    .error.bg-danger.text-danger.hide
+            .row
+                .col-md-12.checkbox-button
+                    input#declare(name='declare' value='true' type='checkbox' checked)
+                    label(for='declare')
+                        | J&apos;accepte de recevoir la newsletter et des annonces publicitaires de la part de UHD Partners.
+                    .check
+                    .error.bg-danger.text-danger.hide
+
+        .col-btn.back
+            button.btn(type='submit') Annuler
+        .col-btn.continue
+            button.btn(type='submit') Continuer
+    .clavier.animated.fadeInUp
+        .row
+            span A
+            span Z
+            span E
+            span R
+            span T
+            span Y
+            span U
+            span I
+            span O
+            span P
+            span.clavier-option.suppr
+            span 1
+            span 2
+            span 3
+        .row
+            span.space-first
+            span Q
+            span S
+            span D
+            span F
+            span G
+            span H
+            span J
+            span K
+            span L
+            span M
+            span.space-between
+            span 4
+            span 5
+            span 6
+        .row
+            span.space-first
+            span W
+            span X
+            span C
+            span V
+            span B
+            span N
+            span.clavier-option -
+            span.clavier-option _
+            span.clavier-option @
+            span.clavier-option .
+            span.space-between
+            span 7
+            span 8
+            span 9
+        .row
+            span.space-first
+            span.clavier-option.space
+            span.space-between
+            span 0
+block scripts
+    script(src='js/script.js')
+    script(src='js/app.js')

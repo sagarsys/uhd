@@ -1,0 +1,32 @@
+{
+  "name": "uhd",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "SET DEBUG=uhd:* & nodemon ./bin/www",
+    "build-js": "parcel build ./src/js/app.js -d ./public/js"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "http-errors": "~1.6.2",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.8",
+    "morgan": "~1.9.0",
+    "nanoid": "^1.3.3",
+    "pug": "2.0.0-beta11",
+    "validator": "^10.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "nodemon": "^1.18.5",
+    "parcel-bundler": "^1.10.3"
+  }
+}
