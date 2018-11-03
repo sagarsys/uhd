@@ -1,4 +1,4 @@
-`const quizz = require('../../../data/quizz.json');
+const quizz = require('../../../data/quizz.json');
 /**
  * Returns a random integer between min (inclusive) and max (inclusive)
  * [Optional] A control array can be passed to ensure that random number is not repeated (recursive)
