@@ -3,22 +3,26 @@ import validator from 'validator';
 
 if (document.querySelector('.col-btn.continue .btn')) {
 	document.querySelector('.col-btn.continue .btn').addEventListener('click', (e) => {
-		console.log('CONTINUE??');
 
 		e.preventDefault();
+
 		hideErrors('.form-input');
 		validate('.form-input')
 			.then((validation) => {
-				console.log('Then', validation);
+				// console.log('Validate Then', validation);
 				// if valid, post data to quiz
 				if (validation.valid) {
-					POST('/quizz', validation.inputs,
+					POST('/user', validation.inputs,
 						{
 							'Accept': 'text/html',
 							'Content-Type': 'application/json'
 						})
-						.then((resp) => { console.log(resp)})
-						.catch((err) => console.error(err))
+						.then((resp) => {
+							if (resp.status === 200) {
+								location.href = resp.url;
+							}
+						})
+						.catch((err) => console.warn(err))
 					;
 				}
 				// else display error messages
@@ -60,18 +64,16 @@ const validate = async (form) => {
 					const minlength = parseInt($input.getAttribute('minlength'), 10);
 					input.valid = validator.isAlpha(value)
 						&& !validator.isEmpty(value)
-						&& validator.isByteLength(value) >= minlength;
+						&& value.length >= minlength;
 					if ( !input.valid ) {
 						const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
 						validation.valid = false;
 						if ( validator.isEmpty(value) ) {
 							input.error = `${ formattedName } cannot be empty.`
-						}
-						else if ( !validator.isAlpha(value) ) {
+						} else if ( !validator.isAlpha(value) ) {
 							input.error = `${ formattedName } can only contain letters A-Z & a-z.`
-						}
-						else if ( validator.isByteLength(value) < minlength ) {
-							input.error = `${ formattedName } must be at least ${ minlength }.`
+						} else if ( value.length < minlength ) {
+							input.error = `${ formattedName } must be at least ${ minlength } characters.`
 						}
 					}
 					break;
@@ -103,8 +105,7 @@ const validate = async (form) => {
 						validation.valid = false;
 						if ( validator.isEmpty(value) ) {
 							input.error = `Postal code cannot be empty.`
-						}
-						else if ( !validator.isPostalCode(value, 'FR') ) {
+						} else if ( !validator.isPostalCode(value, 'FR') ) {
 							input.error = `Invalid French postal code`
 						}
 					}
@@ -123,7 +124,6 @@ const validate = async (form) => {
 					}
 					break;
 				case 'declare':
-					console.warn('declare', value);
 					input.valid = !validator.isEmpty(value)
 						&& value === 'true';
 					if (!input.valid) {
