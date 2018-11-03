@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "SET DEBUG=uhd:* & nodemon ./bin/www",
-    "build-js": "parcel build ./src/client/js/app.js -d ./public/js --no-minify",
-    "dev-js": "parcel watch ./src/client/js/app.js -d ./public/js"
+    "build-js": "parcel build ./src/client/js/app.js -d ./public/js",
+    "dev-js": "parcel build ./src/client/js/app.js -d ./public/js --no-minify"
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",

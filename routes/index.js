@@ -2,17 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 const Quizz = require('../src/server/js/quizz');
+const Users = require('../src/server/js/users');
 
 const { quizz } = Quizz;
 const numOfQuestions = quizz.length;
 
-let user = null;
+let user = {};
 let publishedQuizzIndices = [];
 let correctQuizzIndices = [];
 let currentQuestion =  null;
 
 const resetData = () => {
-	user = null;
+	user = {};
 	publishedQuizzIndices = [];
 	correctQuizzIndices = [];
 	currentQuestion = null;
@@ -32,14 +33,29 @@ router.get('/collecte', function(req, res) {
 /* POST User details collection  */
 router.post('/user', function (req, res) {
 	if (req.body.length > 0) {
-		req.body.forEach(detail => {
-			user = {};
-			user[detail.name] = detail.value;
+		const body = req.body;
+		body.forEach(detail => {
+			if (detail.name !== 'declare') {
+				user[detail.name] = detail.value;
+			}
 		});
-		console.log(user);
-		res.redirect(303, '/quizz');
+
+		if (Users.findUser(user)) {
+			// user exists
+			console.log(1)
+			return res.redirect(303, '/fin');
+		} else {
+			console.log(2)
+			// save user to json & csv file
+			Users.addUser(user);
+			// write to csv files & send mail
+			CSV.sendMail().then(() => console.log('Mail sent.'));
+			// redirect to quizz
+			return res.redirect(303, '/quizz');
+		}
 	} else {
-		res.send(403, { error: 'Unknown error. Please try again.'})
+		console.log(3)
+		return res.send(403, { error: 'Veuillez réessayer'})
 	}
 });
 
@@ -107,16 +123,15 @@ router.post('/quizz/next', function(req, res) {
 	}
 });
 
-// router.post('/results',  function(req, res) {
-// 	console.log(req.body);
-// 	res.redirect(303, '/fin');
-// });
-
 /* POST Quizz end page */
 router.get('/fin', function (req, res) {
 	const count = correctQuizzIndices.length;
 	const win = correctQuizzIndices.length === numOfQuestions;
-	res.render('fin', { title: 'Fin', win, count, numOfQuestions })
+	if (user && Users.findUser(user)) {
+		res.render('fin', { exists: true });
+	} else {
+		res.render('fin', { title: 'Fin', win, count, numOfQuestions })
+	}
 });
 
 module.exports = router;

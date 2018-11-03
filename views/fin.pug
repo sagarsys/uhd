@@ -1,11 +1,10 @@
 extends layout
 
 block content
-    //dejaJoue
-    #fin.container-fluid(class= win ? 'gagne' : 'perdu')
+    #fin.container-fluid(class= (exists ? 'dejaJoue' : (win ? 'gagne' : 'perdu') ))
         .row
             .fin-left.animated.fadeInLeft
-                .resume
+                .resume(class= exists ? 'hide' : null)
                     h3 Vous avez obtenu
                     h1= count
                     h4 bonnes r&eacute;ponses

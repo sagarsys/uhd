@@ -12,15 +12,9 @@ if (document.querySelector('.col-btn.continue .btn')) {
 				// console.log('Validate Then', validation);
 				// if valid, post data to quiz
 				if (validation.valid) {
-					POST('/user', validation.inputs,
-						{
-							'Accept': 'text/html',
-							'Content-Type': 'application/json'
-						})
+					POST('/user', validation.inputs)
 						.then((resp) => {
-							if (resp.status === 200) {
-								location.href = resp.url;
-							}
+							location.href = resp.url;
 						})
 						.catch((err) => console.warn(err))
 					;

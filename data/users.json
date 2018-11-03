@@ -1,0 +1,18 @@
+[
+  {
+    "nom": "Sawuck",
+    "prenom": "Sagar",
+    "email": "sagar.sawuck@gmail.com",
+    "adresse": "Moka",
+    "codePostal": "81106",
+    "ville": "Moka"
+  },
+  {
+    "nom": "Test",
+    "prenom": "Test",
+    "email": "test@test.test",
+    "adresse": "Test Address",
+    "codePostal": "66666",
+    "ville": "Paris"
+  }
+]
