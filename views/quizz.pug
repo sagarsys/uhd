@@ -6,39 +6,37 @@ block content
             .row
                 .col-md-12
                     img.img-responsive(src='/img/logo-blanc.png')
-                    h3 Question 1
-                    h1 Combien y-a-t-il de centres dans le r&eacute;seau Audilab&nbsp;?
+                    h3 Question #{count}
+                    h1= question
     .answers
         .container
             .row
                 .col-md-12
-                    h2 La premi&egrave;re est normale A/V la deuxi&egrave;me est d&eacute;di&eacute;e &agrave; l&rsquo;audio
+                    h2 Oui
                 .col-md-12
-                    h2 83
-                .col-md-12
-                    h2 159
+                    h2 Non
                 .col-md-12
                     button.btn(data-toggle='modal' data-target='#myModal') Valider ma r&eacute;ponse
     #myModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='myModalLabel')
         .modal-dialog(role='document')
             .modal-content
                 .modal-header
-                    h4.modal-title Question 1
-                    h3.modal-title Combien y-a-t-il de centres dans le r&eacute;seau Audilab&nbsp;?
+                    h4.modal-title Question #{count}
+                    h3.modal-title= question
                 .modal-body
                     .container
                         .row
                             .col-md-6
                                 h3 La r&eacute;ponse est :
-                                h1 159
+                                h1= answer
                                 p
-                                    | Pour la s&eacute;r&eacute;nit&eacute; de nos patients, Audilab est l&rsquo;unique r&eacute;seau d&rsquo;audioproth&eacute;sistes en Europe &agrave; avoir fait le choix de la qualit&eacute; certifi&eacute;e. Tous les ans, nos engagements sont audit&eacute;s par un organisme ind&eacute;pendant : l&rsquo;AFNOR. C&rsquo;est en 2002 que le r&eacute;seau Audilab a &eacute;t&eacute; certifi&eacute; ISO 9001. Le r&eacute;seau Audilab est &eacute;galement certifi&eacute; ISO 14001 depuis 2008 et NF Service depuis 2013.
+                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate distinctio eius et hic impedit magni quae quaerat, tenetur vitae. Aliquam amet laboriosam nisi numquam officiis quis voluptas? Est, nemo, temporibus.
                             .col-md-6
-                                img.img-responsive(src='img/q4.jpg')
-                                img.img-responsive(src='img/q4.png')
+                                //img.img-responsive(src='img/q4.jpg')
+                                //img.img-responsive(src='img/q4.png')
                 .modal-footer
                     button.btn(type='button' data-toggle='modal' data-target='#myModal') Question suivante
-                    h3 Question 1 / 5
+                    h3 Question #{count} / #{numOfQuestions}
 
 block scripts
     script(src='js/script.js')
