@@ -6,7 +6,7 @@ block content
             .row
                 .col-md-12
                     img.img-responsive(src='/img/logo-blanc.png')
-                    h3 Question #{count}
+                    h3 Question #[span  ${count}]
                     h1= question
     .answers
         .container
@@ -21,7 +21,7 @@ block content
         .modal-dialog(role='document')
             .modal-content
                 .modal-header
-                    h4.modal-title Question #{count}
+                    h4.modal-title Question #[span  #{count} ]
                     h3.modal-title= question
                 .modal-body
                     .container
@@ -29,14 +29,14 @@ block content
                             .col-md-6
                                 h3 La r&eacute;ponse est :
                                 h1= answer
-                                p
+                                //p
                                     | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate distinctio eius et hic impedit magni quae quaerat, tenetur vitae. Aliquam amet laboriosam nisi numquam officiis quis voluptas? Est, nemo, temporibus.
                             .col-md-6
                                 //img.img-responsive(src='img/q4.jpg')
                                 //img.img-responsive(src='img/q4.png')
                 .modal-footer
-                    button.btn(type='button' data-toggle='modal' data-target='#myModal') Question suivante
-                    h3 Question #{count} / #{numOfQuestions}
+                    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#myModal') Question suivante
+                    h3 Question #[span #{count} ] / #[span  #{numOfQuestions}]
 
 block scripts
     script(src='js/script.js')

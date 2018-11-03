@@ -1,16 +1,18 @@
 extends layout
 
 block content
-    #fin.dejaJoue.container-fluid
+    //dejaJoue
+    #fin.container-fluid(class= win ? 'gagne' : 'perdu')
         .row
             .fin-left.animated.fadeInLeft
                 .resume
                     h3 Vous avez obtenu
-                    h1 3
+                    h1= count
                     h4 bonnes r&eacute;ponses
-                    h3 sur 9 questions
+                    h3 sur #{ numOfQuestions } questions
 
 block scripts
+    script(src='js/script.js')
     script(src='js/fin.js')
     script(src='js/app.js')
 

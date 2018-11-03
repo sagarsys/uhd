@@ -26,20 +26,22 @@ $('.checkbox-button #declare').click(function () {
 });
 
 // VEILLE
-var timer = 300000;
+var timer = 30000;
 var tm;
 
 $('body, div, h1, h2, h3, h4, h5, h6, p, small, span, button, label, img, input').click(function () {
-	clearTimeout(tm);
+	if (tm) clearTimeout(tm);
 	retourVeille(timer);
 });
 
 retourVeille(timer);
 
 function retourVeille(timer) {
-	tm = setTimeout(function () {
-		location.pathname = '/';
-	}, timer);
+	if (location.pathname !== '/') {
+		tm = setTimeout(function () {
+			location.pathname = '/';
+		}, timer);
+	}
 }
 
 /*--------------------------------------------------

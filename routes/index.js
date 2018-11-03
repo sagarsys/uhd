@@ -63,27 +63,47 @@ router.get('/quizz', function (req, res) {
 
 router.post('/quizz/next', function(req, res) {
 	const { userAnswer } = req.body;
+	res.set('Content-Type', 'application/json');
+
 	if (userAnswer === currentQuestion.answer) {
-		// correct answer
+		// correct answer update
 		correctQuizzIndices.push(publishedQuizzIndices[publishedQuizzIndices.length - 1]);
 	} else {
 		// wrong answer -> game over
-		res.status(403).send({ next: false, win: false });
+		const count = publishedQuizzIndices.length;
+		res.send({
+			next: false,
+			win: false,
+			numOfQuestions,
+			count
+		});
 	}
 
-	// if there are more question
-	if (numOfQuestions > publishedQuizzIndices.length) {
+	if  (publishedQuizzIndices.length <= numOfQuestions) {
+		// if there are more question & correct answer
 		const randomInt = Quizz.getRandomInt(numOfQuestions - 1, undefined, publishedQuizzIndices);
 		currentQuestion = quizz[randomInt];
+		const count = publishedQuizzIndices.length;
 		publishedQuizzIndices.push(randomInt);
-		res.status(200).send({
+
+		res.send({
+			next: true,
+			win: false,
 			question: currentQuestion.question,
 			answer: currentQuestion.answer ? 'Oui' : 'Non',
 			numOfQuestions,
-			count: publishedQuizzIndices.length
+			count: count
 		});
 	} else {
-		res.status(403).send({ next: false, win: true });
+		// win
+		const count = publishedQuizzIndices.length - 1;
+
+		res.send({
+			next: false,
+			win: true,
+			numOfQuestions,
+			count
+		});
 	}
 });
 
@@ -94,7 +114,9 @@ router.post('/quizz/next', function(req, res) {
 
 /* POST Quizz end page */
 router.get('/fin', function (req, res) {
-	res.render('fin', { title: 'Fin' })
+	const count = correctQuizzIndices.length;
+	const win = correctQuizzIndices.length === numOfQuestions;
+	res.render('fin', { title: 'Fin', win, count, numOfQuestions })
 });
 
 module.exports = router;

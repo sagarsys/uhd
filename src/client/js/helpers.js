@@ -17,3 +17,11 @@ export const POST = async (url, data = null, headers = DEFAULT_XHR_HEADERS) => {
 };
 
 export default POST;
+
+/*
+ * Disable browser history
+ */
+history.pushState(null, null, document.URL);
+window.addEventListener('popstate', function () {
+	history.pushState(null, null, document.URL);
+});
