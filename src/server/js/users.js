@@ -64,7 +64,7 @@ const convertJsonToCSVStringAndWriteToFile = async (users) => {
 };
 
 const sendMail = async (opts) => {
-	console.log('dend mail')
+	console.log('send mail')
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -87,7 +87,7 @@ const sendMail = async (opts) => {
 		subject: 'UHD Quizz - Exported User CSV',
 		html: `<p>Bonjour,</p>
 			<br>
- 			<p>Veuillez trouver ci-joint les d&eacute;tails du dernier participant du quizz UHD et aussi la liste de tous les participants en format CSV. </p>
+ 			<p>Veuillez trouver ci-joint la liste mise-a-jour de tous les participants en format CSV. </p>
  			<br>
  			<p>Bien cordialement,</p>
  			<p>UHD Quizz Core Team.</p>
