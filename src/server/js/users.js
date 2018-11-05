@@ -28,7 +28,7 @@ const addUser = (user) => {
 		if (err) console.log(err);
 		else {
 			console.log(`File written successfully -> ${filePath}`);
-			convertJsonToCSVStringAndWriteToFile(users).then(sendMail());
+			convertJsonToCSVStringAndWriteToFile(users).then(() => sendMail());
 		}
 	});
 };
