@@ -42,19 +42,16 @@ router.post('/user', function (req, res) {
 
 		if (Users.findUser(user)) {
 			// user exists
-			console.log(1)
 			return res.redirect(303, '/fin');
 		} else {
-			console.log(2)
 			// save user to json & csv file
 			Users.addUser(user);
 			// write to csv files & send mail
-			CSV.sendMail().then(() => console.log('Mail sent.'));
+			Users.sendMail().then(() => console.log('Mail sent.'));
 			// redirect to quizz
 			return res.redirect(303, '/quizz');
 		}
 	} else {
-		console.log(3)
 		return res.send(403, { error: 'Veuillez réessayer'})
 	}
 });

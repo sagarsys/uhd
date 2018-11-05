@@ -119,5 +119,6 @@ const sendMail = async (opts) => {
 
 module.exports = {
 	addUser,
-	findUser
+	findUser,
+	sendMail
 };
