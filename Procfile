@@ -1,2 +1,2 @@
 server: node ./bin/www
-debug: npm run dev
+debug: npm run debug
