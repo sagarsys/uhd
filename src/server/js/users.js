@@ -37,12 +37,12 @@ const convertJsonToCSVStringAndWriteToFile = async (users) => {
 
 	const filePath = path.resolve(__dirname, '../../../data/users.csv');
 
-	console.log(users)
+	// console.log(users)
 
 	const writeCSVToFile = (csv) => {
-		console.log('write csv', csv, filePath);
+		// console.log('write csv', csv, filePath);
 		fs.writeFile(filePath, csv, (err) => {
-			if (err) console.log(err)
+			if (err) console.log(err);
 			else {
 				console.log(`File written successfully -> ${filePath}`);
 			}
@@ -64,7 +64,6 @@ const convertJsonToCSVStringAndWriteToFile = async (users) => {
 };
 
 const sendMail = async (opts) => {
-	console.log('send mail')
 	const transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -83,14 +82,14 @@ const sendMail = async (opts) => {
 
 	let mailOptions = {
 		from: 'CSVMailer <csv.mailer.uhd@gmail.com>',
-		to: 'sagar.sawuck@gmail.com',
+		to: 'hubert@bouan.net',
 		subject: 'UHD Quizz - Exported User CSV',
 		html: `<p>Bonjour,</p>
 			<br>
- 			<p>Veuillez trouver ci-joint la liste mise-a-jour de tous les participants en format CSV. </p>
+ 			<p>Veuillez trouver ci-joint la liste mise-a-jour de tous les participants en format CSV.</p>
  			<br>
  			<p>Bien cordialement,</p>
- 			<p>UHD Quizz Core Team.</p>
+ 			<p>UHD Quizz Team.</p>
  			<br>
  			<small>Envoy&eacute; le ${ formatDate(new Date()) }.</small>
 	`,
