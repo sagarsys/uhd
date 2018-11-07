@@ -13,6 +13,7 @@ let correctQuizzIndices = [];
 let currentQuestion =  null;
 
 const resetData = () => {
+	console.log('reset');
 	user = {};
 	publishedQuizzIndices = [];
 	correctQuizzIndices = [];
@@ -45,11 +46,14 @@ router.post('/user', function (req, res) {
 			return res.redirect(303, '/fin');
 		} else {
 			// save user to json & csv file
-			Users.addUser(user);
-			// write to csv files & send mail
-			Users.sendMail().then(() => console.log('Mail sent.'));
-			// redirect to quizz
-			return res.redirect(303, '/quizz');
+			Users.addUser(user)
+				.then(() => {
+					// write to csv files & send mail
+					Users.sendMail()
+						.then(() => console.log('Mail sent.'))
+						// redirect to quizz
+						.then(() => res.redirect(303, '/quizz'))
+				});
 		}
 	} else {
 		return res.send(403, { error: 'Veuillez réessayer'})
@@ -62,12 +66,13 @@ router.get('/quizz', function (req, res) {
 		const randomInt = Quizz.getRandomInt(numOfQuestions - 1);
 		currentQuestion = quizz[randomInt];
 		publishedQuizzIndices.push(randomInt);
+		console.log('Quizz Current Question', currentQuestion, publishedQuizzIndices);
 		res.render('quizz', {
 			title: 'Quizz',
 			question: currentQuestion.question,
 			answer: currentQuestion.answer ? 'Oui' : 'Non',
+			count: 1,
 			numOfQuestions,
-			count: 1
 		});
 	} else {
 		res.redirect(303, '/');
@@ -76,12 +81,43 @@ router.get('/quizz', function (req, res) {
 
 router.post('/quizz/next', function(req, res) {
 	const { userAnswer } = req.body;
-	res.set('Content-Type', 'application/json');
+	// res.set('Content-Type', 'application/json');
+	console.log('Quizz NEXT Current Question', currentQuestion, publishedQuizzIndices.length);
 
 	if (userAnswer === currentQuestion.answer) {
 		// correct answer update
 		correctQuizzIndices.push(publishedQuizzIndices[publishedQuizzIndices.length - 1]);
+
+		if  (publishedQuizzIndices.length <= numOfQuestions) {
+			console.log('next');
+			// if there are more question & correct answer
+			const randomInt = Quizz.getRandomInt(numOfQuestions - 1, undefined, publishedQuizzIndices);
+			currentQuestion = quizz[randomInt];
+			const count = publishedQuizzIndices.length;
+			publishedQuizzIndices.push(randomInt);
+
+			res.send({
+				next: true,
+				win: false,
+				question: currentQuestion.question,
+				answer: currentQuestion.answer ? 'Oui' : 'Non',
+				numOfQuestions,
+				count: count
+			});
+		} else {
+			console.log('win');
+			// win
+			res.send({
+				next: false,
+				win: true,
+				numOfQuestions,
+				count: numOfQuestions
+			});
+		}
+
+
 	} else {
+		console.log('lose');
 		// wrong answer -> game over
 		const count = publishedQuizzIndices.length;
 		res.send({
@@ -92,42 +128,16 @@ router.post('/quizz/next', function(req, res) {
 		});
 	}
 
-	if  (publishedQuizzIndices.length <= numOfQuestions) {
-		// if there are more question & correct answer
-		const randomInt = Quizz.getRandomInt(numOfQuestions - 1, undefined, publishedQuizzIndices);
-		currentQuestion = quizz[randomInt];
-		const count = publishedQuizzIndices.length;
-		publishedQuizzIndices.push(randomInt);
-
-		res.send({
-			next: true,
-			win: false,
-			question: currentQuestion.question,
-			answer: currentQuestion.answer ? 'Oui' : 'Non',
-			numOfQuestions,
-			count: count
-		});
-	} else {
-		// win
-		const count = publishedQuizzIndices.length - 1;
-
-		res.send({
-			next: false,
-			win: true,
-			numOfQuestions,
-			count
-		});
-	}
 });
 
 /* POST Quizz end page */
 router.get('/fin', function (req, res) {
-	const count = correctQuizzIndices.length;
 	const win = correctQuizzIndices.length === numOfQuestions;
+	const count = win ? numOfQuestions : correctQuizzIndices.length;
 	if (user && Users.findUser(user)) {
-		res.render('fin', { exists: true });
+		return res.render('fin', { exists: true });
 	} else {
-		res.render('fin', { title: 'Fin', win, count, numOfQuestions })
+		return res.render('fin', { title: 'Fin', win, count, numOfQuestions });
 	}
 });
 

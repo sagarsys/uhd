@@ -21,10 +21,10 @@ const findUser = (user) => {
 	return users.find(usr => usr.email ===  user.email);
 };
 
-const addUser = (user) => {
+const addUser = async (user) => {
 	const users = getUsers();
 	users.push(user);
-	fs.writeFile(filePath, JSON.stringify(users, undefined, 2), (err) => {
+	await fs.writeFile(filePath, JSON.stringify(users, undefined, 2), (err) => {
 		if (err) console.log(err);
 		else {
 			console.log(`File written successfully -> ${filePath}`);
@@ -41,12 +41,7 @@ const convertJsonToCSVStringAndWriteToFile = async (users) => {
 
 	const writeCSVToFile = (csv) => {
 		// console.log('write csv', csv, filePath);
-		fs.writeFile(filePath, csv, (err) => {
-			if (err) console.log(err);
-			else {
-				console.log(`File written successfully -> ${filePath}`);
-			}
-		});
+		fs.writeFileSync(filePath, csv);
 	};
 
 	await csvConvertor.json2csv(users,

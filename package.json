@@ -31,5 +31,13 @@
   },
   "engines": {
     "node": "8.x"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "./data/*.json",
+      "./data/*.csv",
+      "./data/**",
+      "./bin/www"
+    ]
   }
 }
