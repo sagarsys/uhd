@@ -134,9 +134,10 @@ router.post('/quizz/next', function(req, res) {
 router.get('/fin', function (req, res) {
 	const win = correctQuizzIndices.length === numOfQuestions;
 	const count = win ? numOfQuestions : correctQuizzIndices.length;
-	if (user && Users.findUser(user)) {
+	if (user && Users.findUser(user) && publishedQuizzIndices && publishedQuizzIndices.length > 0) {
 		return res.render('fin', { exists: true });
 	} else {
+		resetData();
 		return res.render('fin', { title: 'Fin', win, count, numOfQuestions });
 	}
 });
