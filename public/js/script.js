@@ -107,7 +107,7 @@ function touche(element) {
 }
 
 // Attach click event listener to keyboard
-$('.clavier').click(function (e) {
+$('.clavier span').click(function (e) {
 	touche(e.target);
 });
 
